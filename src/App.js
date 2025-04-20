@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import Home from "./pages/Home";
 import SinglePage from "./pages/SinglePage";
 import Write from "./pages/Write";
-import Footer from './components/Footer';
+//import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import "./style.scss";
 
@@ -15,7 +15,7 @@ const Layout=()=>{
     <>
     <Navbar/>
     <Outlet/>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   );
 };
@@ -28,8 +28,8 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Layout/>} >
       <Route index element={<Home />} />
-          <Route path="post/:id" element={<SinglePage />} />
-          <Route path="write" element={<Write />} />
+          <Route path="/posts/:id" element={<SinglePage />} />
+          <Route path="/write" element={<Write />} />
       </Route>
       <Route path='/register' element={<Register/>}></Route>
       <Route path='/login' element={<Login/>}></Route>

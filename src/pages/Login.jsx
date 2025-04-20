@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
+import { useContext } from "react";
 import {Link,useNavigate} from 'react-router-dom';
-import axios from 'axios';
+import { AuthContext } from "../context/authContext";
+// import axios from 'axios';
 
 const Login = () => {
 
@@ -13,6 +15,8 @@ const Login = () => {
     password: "",
   });
 
+const { login } = useContext(AuthContext);
+
  const handleChange= e=>{     
   setInputs((prev)=>({...prev,[e.target.name]:e.target.value}));
  }
@@ -20,8 +24,9 @@ const Login = () => {
  const handleSubmit=async e=>{          //axios used, api request hogi
   e.preventDefault();
   try {
-    await axios.post("http://localhost:8800/api/auth/login",inputs, { withCredentials: true });
-    navigate("/home");
+   // await axios.post("http://localhost:8800/api/auth/login",inputs, { withCredentials: true });
+    await login(inputs)
+    navigate("/");
   }
   catch(err) {
     //console.error("Registration failed:", err.response?.data || err.message);
@@ -66,3 +71,4 @@ const Login = () => {
 };
 
 export default Login 
+
